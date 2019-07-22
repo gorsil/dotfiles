@@ -55,9 +55,10 @@ set foldnestmax=3
 syntax enable
 filetype plugin indent on
 
-" Visual config
+" Colorscheme config
+let g:lucius_style = 'dark'
+let g:lucius_contrast_bg = 'high'
 colorscheme lucius
-set background=dark
 
 " Switching windows
 map <C-j> <C-w>j

@@ -35,17 +35,20 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-256color
+	zsh-syntax-highlighting
    	kubectl
 	yc
+	fzf
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zshrc_private
+if [[ -e ~/.zshrc_private ]]; then
+	source ~/.zshrc_private
+fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=117'
 
-# Load fzf autocompletion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval $(thefuck --alias)
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f '~/yandex-cloud/path.bash.inc' ]; then source '~/yandex-cloud/path.bash.inc'; fi

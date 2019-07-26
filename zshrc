@@ -1,21 +1,16 @@
-# Default editor
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
-
-# Go related config
-export GOPATH=$HOME/go
-export PATH=${PATH}:${GOROOT}/bin
-
-# Add access to custom binaries
-export PATH=${PATH}:~/opt/
-export PATH=${PATH}:~/opt/bin
-
+export EDITOR='vim'
 export DEFAULT_USER="$(whoami)"
 export TERM="xterm-256color"
 
+# Setup go installation and work directory
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+
+# Add access to custom binaries
+export PATH=$PATH:~/opt/
+export PATH=$PATH:~/opt/bin
+
+# All sorts of alliases/shortcuts
 alias git-uncommit='git reset --soft HEAD~'
 alias vimrc='vim ~/.vimrc'
 alias zshrc='vim ~/.zshrc && source ~/.zshrc'
@@ -24,31 +19,28 @@ alias l='ls -l'
 alias ll='ls -l'
 alias lla='ls -la'
 
-# Path to oh-my-zsh installation.
+# Zsh configurations
 export ZSH=~/.oh-my-zsh
-
 ZSH_THEME="agnoster"
-ENABLE_CORRECTION="true" # Command auto-correction
+ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=117'
 
 plugins=(
-	git
-	zsh-autosuggestions
-	zsh-256color
-	zsh-syntax-highlighting
-   	kubectl
-	yc
 	fzf
+	git
+	docker
+	debian
+	zsh-256color
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	# yc
 )
 
 source $ZSH/oh-my-zsh.sh
-if [[ -e ~/.zshrc_private ]]; then
-	source ~/.zshrc_private
-fi
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=117'
+# Private config with tokens and stuff like that
+if [[ -e ~/.zshrc_private ]]; then source ~/.zshrc_private; fi
 
 eval $(thefuck --alias)
-
-# The next line updates PATH for Yandex Cloud CLI.
 if [ -f '~/yandex-cloud/path.bash.inc' ]; then source '~/yandex-cloud/path.bash.inc'; fi

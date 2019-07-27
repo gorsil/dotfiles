@@ -8,6 +8,7 @@ mv ~/oh-my-zsh ~/.oh-my-zsh
 
 ln -fsr zshrc ~/.zshrc
 ln -fsr vimrc ~/.vimrc
+ln -fsr xsessionrc ~/.xsessionrc
 
 ln -fsr zsh-syntax-highlighting ~/.oh-my-zsh/plugins
 ln -fsr zsh-autosuggestions ~/.oh-my-zsh/plugins

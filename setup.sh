@@ -7,24 +7,37 @@ function setup_link() {
 }
 
 function setup_dir_link() {
-	if [[ -d $2 ]] then
-		if [[ -h $2 ]] then
-			rm $2
+	local target=$1
+	local dir=$2
+	local is_dotfile=$3
+	local dest
+
+	if [[ $is_dotfile ]] then
+		dest="${dir}/.${target}"
+	else
+		dest="${dir}/${target}"
+	fi
+
+	if [[ -d $dest ]] then
+		if [[ -h $dest ]] then
+			rm $dest
 		else
-			mv $2 "${2}-old"
+			mv $dest "${dest}-old"
 		fi
 	fi
-	setup_link $1 $2
+
+	setup_link $target $dest
+
 }
 
 setup_link zshrc ~/.zshrc
 setup_link vimrc ~/.vimrc
 setup_link xsessionrc ~/.xsessionrc
 
-setup_dir_link oh-my-zsh ~/.oh-my-zsh
-setup_dir_link zsh-syntax-highlighting ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-setup_dir_link zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-setup_dir_link zsh-256color ~/.oh-my-zsh/plugins/zsh-256color
+setup_dir_link oh-my-zsh ~/ true
+setup_dir_link zsh-syntax-highlighting ~/.oh-my-zsh/plugins
+setup_dir_link zsh-autosuggestions ~/.oh-my-zsh/plugins
+setup_dir_link zsh-256color ~/.oh-my-zsh/plugins
 
 setup_link vim-lucius/colors/lucius.vim ~/.vim/colors
 

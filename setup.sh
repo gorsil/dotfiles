@@ -33,6 +33,7 @@ function setup_dir_link() {
 setup_link zshrc ~/.zshrc
 setup_link vimrc ~/.vimrc
 setup_link xsessionrc ~/.xsessionrc
+setup_dir_link i3 ~/.config
 
 setup_dir_link oh-my-zsh ~/ true
 setup_dir_link zsh-syntax-highlighting ~/.oh-my-zsh/plugins

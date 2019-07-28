@@ -5,7 +5,7 @@ Run `./setup.sh`
 This setup requires quite a bit of manual configuration atm.
 
 
-``
+```
 # Install i3 manually
 
 sudo apt-get install vim vim-nox nodejs npm node-typescript build-essential cmake python3-dev cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev python3

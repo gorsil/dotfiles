@@ -28,7 +28,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'sheerun/vim-polyglot'
 
 " Golang
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Python
 Plug 'mitsuhiko/vim-jinja'
@@ -100,43 +100,19 @@ let g:airline_theme = "bubblegum"
 let g:airline#extensions#branch#enabled = 1
 let g:rainbow_active = 1
 
-" let g:go_list_type = "quickfix"
-" let g:go_fmt_command = "gofmt"
-" let g:go_fmt_fail_silently = 1
-" let g:go_highlight_types = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_structs = 1
-" let g:go_highlight_generate_tags = 1
-" let g:go_highlight_extra_types = 1
-
-" Ale settings
-let g:ale_fix_on_save = 1
-let b:ale_linters = {
-\	'go	': ['gometalinter'],
-\	'python': ['flake8'],
-\}
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'go': ['gofmt'],
-\   'python': ['autopep8'],
-\}
-
-"let g:ale_linters_explicit = 1
-let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
-
-let g:ale_python_flake8_executable = '/usr/bin/python2.7'
-let g:ale_python_flake8_options = '-m flake8 --ignore=D100,D101,D103,D107'
-let g:ale_python_autopep8_options = '--max-line-length 120'
-
-let g:ale_c_build_dir_names = ["~/arcadia"]
+" Go settings
+let g:go_auto_type_info = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_extra_types = 1
 
 augroup go
-
   au!
   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
@@ -157,8 +133,26 @@ augroup go
   au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
   au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
   au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
-
 augroup END
+
+" Ale settings
+let g:ale_fix_on_save = 1
+let b:ale_linters = {
+\	'go	': ['gometalinter'],
+\	'python': ['flake8'],
+\}
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'go': ['gofmt'],
+\   'python': ['autopep8'],
+\}
+
+let g:ale_linters_explicit = 1
+let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
+let g:ale_python_flake8_executable = '/usr/bin/python2.7'
+let g:ale_python_flake8_options = '-m flake8 --ignore=D100,D101,D103,D107'
+let g:ale_python_autopep8_options = '--max-line-length 120'
 
 let g:indentLine_enabled = 1
 let g:indentLine_color_term=236

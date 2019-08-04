@@ -5,6 +5,7 @@ export TERM="xterm-256color"
 # Setup go installation and work directory
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
+export GO111MODULE=on;
 
 # Add access to custom binaries
 export PATH=$PATH:~/opt/

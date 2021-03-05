@@ -5,7 +5,6 @@ export TERM="xterm-256color"
 # Setup go installation and work directory
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
-export GO111MODULE=on;
 
 # Add access to custom binaries
 export PATH=$PATH:~/opt/
@@ -16,6 +15,7 @@ alias git-uncommit='git reset --soft HEAD~'
 alias vimrc='vim ~/.vimrc'
 alias zshrc='vim ~/.zshrc && source ~/.zshrc'
 alias zshrcp='vim ~/.zshrc_private && source ~/.zshrc'
+alias swayc='vim ~/.config/sway/config'
 alias l='ls -l'
 alias ll='ls -l'
 alias lla='ls -la'
@@ -35,7 +35,6 @@ plugins=(
 	zsh-256color
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	# yc
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -43,5 +42,4 @@ source $ZSH/oh-my-zsh.sh
 # Private config with tokens and stuff like that
 if [[ -e ~/.zshrc_private ]]; then source ~/.zshrc_private; fi
 
-eval $(thefuck --alias)
-if [ -f '~/yandex-cloud/path.bash.inc' ]; then source '~/yandex-cloud/path.bash.inc'; fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

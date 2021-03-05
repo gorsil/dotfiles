@@ -8,6 +8,7 @@ Plug 'Valloric/YouCompleteMe' " Multi-lang autocompletion
 " Visuals
 Plug 'bling/vim-airline' " Airline
 Plug 'vim-airline/vim-airline-themes' " Airline themes
+Plug 'zivyangll/git-blame.vim' " git blame
 Plug 'airblade/vim-gitgutter' " Show git edits
 Plug 'mhinz/vim-signify' " Show VCS edits
 Plug 'Yggdroot/indentLine' " Show indentations

@@ -1,4 +1,5 @@
 #!/bin/zsh
+#
 
 set -e
 
@@ -27,19 +28,22 @@ function setup_dir_link() {
 	fi
 
 	setup_link $target $dest
-
 }
+
+mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/sway
+mkdir -p ~/.vim/colors
 
 setup_link zshrc ~/.zshrc
 setup_link vimrc ~/.vimrc
 setup_link xsessionrc ~/.xsessionrc
-setup_dir_link i3 ~/.config
+setup_link alacritty.yml ~/.config/alacritty/alacritty.yml
+setup_link sway_config ~/.config/sway/config
+setup_link vim-lucius/colors/lucius.vim ~/.vim/colors
 
 setup_dir_link oh-my-zsh ~/ true
 setup_dir_link zsh-syntax-highlighting ~/.oh-my-zsh/plugins
 setup_dir_link zsh-autosuggestions ~/.oh-my-zsh/plugins
 setup_dir_link zsh-256color ~/.oh-my-zsh/plugins
-
-setup_link vim-lucius/colors/lucius.vim ~/.vim/colors
 
 unset -f setup_link setup_dir_link

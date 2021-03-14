@@ -2,7 +2,7 @@
 ```
 sudo pacman -Syu && \
 sudo pacman -S ansible && \
-ansible-playbook -v config.yml
+ansible-playbook -v system.yml
 ```
 ### Compile ycm
 

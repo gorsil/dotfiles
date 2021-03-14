@@ -89,7 +89,6 @@
       with_items:
         - ~/.config/alacritty
         - ~/.config/sway
-        - ~/.config/waybar/
         - ~/.vim/colors
       tags:
         - dotfiles
@@ -104,7 +103,7 @@
         - { src: "$PWD/vimrc", dest: "~/.vimrc" }
         - { src: "$PWD/xsessionrc", dest: "~/.xsessionrc" }
 
-        - { src: "$PWD/waybar", dest: "~/.config/waybar/config" }
+        - { src: "$PWD/waybar", dest: "~/.config/waybar" }
         - { src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml" }
 
         - { src: "$PWD/oh-my-zsh", dest: "~/.oh-my-zsh" }

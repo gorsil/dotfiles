@@ -45,7 +45,8 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": true,
-		"on-click": "alacritty -e htop"
+		"on-click": "alacritty -e htop",
+		"interval": 1
     },
     "memory": {
         "format": "{}% "

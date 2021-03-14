@@ -19,6 +19,9 @@
           - zsh
           - gdm
           - sway
+          - waybar
+          - gammastep
+          - otf-font-awesome
           - alacritty
           - rofi
           - dmenu
@@ -83,6 +86,7 @@
       with_items:
         - ~/.config/alacritty
         - ~/.config/sway
+        - ~/.config/waybar/
         - ~/.vim/colors
       tags:
         - dotfiles
@@ -96,7 +100,10 @@
         - { src: "$PWD/zshrc", dest: "~/.zshrc" }
         - { src: "$PWD/vimrc", dest: "~/.vimrc" }
         - { src: "$PWD/xsessionrc", dest: "~/.xsessionrc" }
+
+        - { src: "$PWD/waybar", dest: "~/.config/waybar/config" }
         - { src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml" }
+
         - { src: "$PWD/oh-my-zsh", dest: "~/.oh-my-zsh" }
         - { src: "$PWD/zsh-syntax-highlighting", dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting" }
         - { src: "$PWD/zsh-autosuggestions", dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions" }

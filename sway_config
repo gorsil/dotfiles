@@ -142,6 +142,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Take a screenshot
+bindsym $mod+Shift+p exec grim -g "$(slurp -d)" - | wl-copy
+bindsym $mod+p exec grim - | wl-copy
+
 bar {
 	swaybar_command waybar
 }

@@ -45,6 +45,9 @@
           - the_silver_searcher
           - vim-jedi
           - python-jedi
+          - grim
+          - slurp
+          - wl-clipboard
         state: present
       tags:
         - system

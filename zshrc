@@ -32,6 +32,8 @@ plugins=(
 	fzf
 	git
 	docker
+	kubectl
+	helm
 	debian
 	zsh-256color
 	zsh-autosuggestions

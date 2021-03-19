@@ -48,15 +48,9 @@
           - grim
           - slurp
           - wl-clipboard
+          - helm
+          - kubectl
         state: present
-      tags:
-        - system
-
-    - name: "disable lightdm"
-      become: yes
-      systemd:
-        name: lightdm
-        enabled: no
       tags:
         - system
 

@@ -135,6 +135,16 @@
       tags:
         - dotfiles
 
+    - name: "create links to scripts, performed as root"
+      file:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest}}"
+        state: link
+      with_items:
+        - { src: "$PWD/scripts/usdrub.sh", dest: "/usr/local/bin/usdrub"}
+      tags:
+        - dotfiles
+
     - name: "create dir for vim plug"
       file:
         path: /home/gorsil/.vim/autoload

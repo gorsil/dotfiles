@@ -4,9 +4,9 @@
     "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "network", "cpu", "memory", "temperature", "pulseaudio", "battery", "battery#bat2", "sway/language", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "custom/usd", "network", "cpu", "memory", "temperature", "pulseaudio", "battery", "battery#bat2", "sway/language", "clock", "tray"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -108,6 +108,11 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/usd": {
+        "format": "{}",
+        "exec": "usdrub",
+        "interval": 60,
     },
     "custom/media": {
         "format": "{icon} {}",

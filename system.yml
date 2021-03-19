@@ -3,7 +3,7 @@
   connection: local
   gather_facts: no
   tasks:
-    - name: "Run system update"
+    - name: "run system update"
       become: yes
       pacman:
         update_cache: yes
@@ -11,7 +11,7 @@
       tags:
         - system
 
-    - name: "Install required packages"
+    - name: "install required packages"
       become: yes
       pacman:
         name:

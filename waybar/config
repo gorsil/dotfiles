@@ -45,8 +45,8 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": true,
-		"on-click": "alacritty -e htop",
-		"interval": 1
+        "on-click": "alacritty -e htop",
+        "interval": 5
     },
     "memory": {
         "format": "{}% "
@@ -83,7 +83,6 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format": "balls",
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP) ",

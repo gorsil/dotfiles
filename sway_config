@@ -156,6 +156,6 @@ default_border pixel
 # gaps inner 6
 # gaps outer 6
 
-exec gammastep -t 3700K:3200K -l 55.751244:37.618423
+exec gammastep -t 4200K:3200K -l 55.751244:37.618423
 
 include /etc/sway/config.d/*

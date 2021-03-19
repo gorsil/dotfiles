@@ -109,7 +109,7 @@
         "on-click": "pavucontrol"
     },
     "custom/usd": {
-        "format": "{}",
+        "format": "🇺🇸 {}",
         "exec": "usdrub",
         "interval": 60,
     },

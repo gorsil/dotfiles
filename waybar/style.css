@@ -76,6 +76,7 @@ window#waybar.chromium {
 #custom-media,
 #tray,
 #mode,
+#custom-usd,
 #idle_inhibitor,
 #mpd {
     padding: 0 6px;
@@ -105,6 +106,11 @@ window#waybar.chromium {
 
 #battery {
     background-color: #87abab;
+    color: #333333;
+}
+
+#custom-usd {
+    background-color: #87ab8c;
     color: #333333;
 }
 

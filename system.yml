@@ -3,7 +3,7 @@
   connection: local
   gather_facts: no
   tasks:
-    - name: "Run system update"
+    - name: "run system update"
       become: yes
       pacman:
         update_cache: yes
@@ -11,7 +11,7 @@
       tags:
         - system
 
-    - name: "Install required packages"
+    - name: "install required packages"
       become: yes
       pacman:
         name:
@@ -31,6 +31,7 @@
           - base-devel
           - python
           - python2
+          - ipython
           - go
           - docker
           - ansible
@@ -50,7 +51,31 @@
           - wl-clipboard
           - helm
           - kubectl
+          - w3m
+          - lynx
+          - links
+          - elinks
+          - abook
+          - jupyter
+          - neofetch
+          - nload
+          - noto-fonts
+          - noto-fonts-emoji
+          - noto-fonts-cjk
+          - noto-fonts-extra
+          - ttf-liberation
+          - ttf-droid
+          - ttf-font-awesome
         state: present
+      tags:
+        - system
+
+    - name: "install pip packages"
+      become: yes
+      pip:
+        name:
+          - aiomoex
+          - pandas
       tags:
         - system
 
@@ -104,6 +129,16 @@
         - { src: "$PWD/zsh-syntax-highlighting", dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting" }
         - { src: "$PWD/zsh-autosuggestions", dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions" }
         - { src: "$PWD/zsh-256color", dest: "~/.oh-my-zsh/plugins/zsh-256color" }
+      tags:
+        - dotfiles
+
+    - name: "create links to scripts, performed as root"
+      file:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest}}"
+        state: link
+      with_items:
+        - { src: "$PWD/scripts/usdrub.sh", dest: "/usr/local/bin/usdrub"}
       tags:
         - dotfiles
 

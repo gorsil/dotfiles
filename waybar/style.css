@@ -143,6 +143,7 @@ label:focus {
 #cpu {
     background-color: #8fb4b5;
     color: #333333;
+    min-width: 36px; /* stops cpu widget jiggling at low cpu usage */
 }
 
 #memory {

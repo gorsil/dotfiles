@@ -120,7 +120,6 @@
       with_items:
         - { src: "$PWD/zshrc", dest: "~/.zshrc" }
         - { src: "$PWD/vimrc", dest: "~/.vimrc" }
-        - { src: "$PWD/xsessionrc", dest: "~/.xsessionrc" }
 
         - { src: "$PWD/waybar", dest: "~/.config/waybar" }
         - { src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml" }

@@ -45,6 +45,7 @@ set wildmenu
 highlight LineNr ctermfg=yellow ctermbg=darkgrey
 highlight CursorLineNr ctermfg=yellow ctermbg=darkgrey
 
+set ff=unix
 set number
 set relativenumber
 set tabstop=4

@@ -152,8 +152,6 @@ let g:ale_fixers = {
 
 let g:ale_linters_explicit = 1
 let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
-let g:ale_python_flake8_executable = '/usr/bin/python2.7'
-let g:ale_python_flake8_options = '-m flake8 --ignore=D100,D101,D103,D107'
 let g:ale_python_autopep8_options = '--max-line-length 120'
 
 let g:indentLine_enabled = 1

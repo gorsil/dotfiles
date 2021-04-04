@@ -66,6 +66,9 @@
           - ttf-liberation
           - ttf-droid
           - ttf-font-awesome
+          - xz
+          - nmap
+          - flake8
         state: present
       tags:
         - system

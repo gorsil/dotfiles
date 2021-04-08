@@ -137,6 +137,7 @@
         - dotfiles
 
     - name: "create links to scripts, performed as root"
+      become: yes
       file:
         src: "{{ item.src }}"
         dest: "{{ item.dest}}"

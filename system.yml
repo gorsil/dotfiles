@@ -69,6 +69,8 @@
           - xz
           - nmap
           - flake8
+          - torbrowser-launcher
+          - yarn
         state: present
       tags:
         - system

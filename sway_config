@@ -20,6 +20,10 @@ input type:keyboard {
     xkb_options ctrl:nocaps,grp:alt_shift_toggle
 }
 
+input type:touchpad {
+    tap enabled
+}
+
 # Clamshell mode
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable

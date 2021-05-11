@@ -150,6 +150,10 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+p exec grim -g "$(slurp -d)" - | wl-copy
 bindsym $mod+p exec grim - | wl-copy
 
+# Resize current window to 1/3 of total screen width, useful for ultra-wide monitor
+bindsym $mod+o resize set width 33 ppt
+bindsym $mod+i resize set width 50 ppt
+
 bar {
 	swaybar_command waybar
 }

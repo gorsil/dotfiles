@@ -71,6 +71,7 @@
           - flake8
           - torbrowser-launcher
           - yarn
+          - gdb
         state: present
       tags:
         - system

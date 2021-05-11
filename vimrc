@@ -142,6 +142,8 @@ let g:ale_fix_on_save = 1
 let b:ale_linters = {
 \	'go	': ['gometalinter'],
 \	'python': ['flake8'],
+\	'json': ['jsonlint'],
+\	'javascript': ['eslint', 'flow'],
 \}
 
 let g:ale_fixers = {

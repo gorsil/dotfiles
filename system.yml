@@ -84,6 +84,18 @@
       tags:
         - system
 
+    - name: "install npm packages"
+      become: yes
+      npm:
+        name: "{{ item }}"
+        global: yes
+      with_items:
+        - jsonlint
+        - eslint
+        - fixjson
+      tags:
+        - system
+
     - name: "enable gdm"
       become: yes
       systemd:

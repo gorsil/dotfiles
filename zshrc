@@ -20,6 +20,7 @@ alias sysc='vim ~/.config/dotfiles/system.yml'
 alias l='ls -l'
 alias ll='ls -l'
 alias lla='ls -la'
+alias vi='vim'
 
 # Zsh configurations
 export ZSH=~/.oh-my-zsh

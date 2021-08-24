@@ -141,7 +141,7 @@ augroup END
 let g:ale_fix_on_save = 1
 let b:ale_linters = {
 \	'go	': ['gometalinter'],
-\	'python': ['flake8'],
+\	'python': ['flake8', 'pylint', 'mypy', 'pyflakes'],
 \	'json': ['jsonlint'],
 \	'javascript': ['eslint', 'flow'],
 \}
@@ -149,7 +149,7 @@ let b:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'go': ['gofmt', 'goimports'],
-\   'python': ['autopep8'],
+\   'python': ['autopep8', 'yapf']
 \}
 
 let g:ale_linters_explicit = 1

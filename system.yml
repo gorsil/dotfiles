@@ -72,6 +72,10 @@
           - torbrowser-launcher
           - yarn
           - gdb
+          - python-isort
+          - yapf
+          - python-pytest
+          - python-poetry
         state: present
       tags:
         - system

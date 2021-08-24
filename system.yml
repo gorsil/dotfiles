@@ -66,6 +66,7 @@
           - ttf-liberation
           - ttf-droid
           - ttf-font-awesome
+          - ttf-hack
           - xz
           - nmap
           - flake8

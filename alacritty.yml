@@ -105,23 +105,23 @@
 font:
   normal:
     # Default:
-    #   - (Linux/BSD) monospace
-    family: monospace
+    #   - (Linux/BSD) hack
+    family: hack
     style: Regular
 
   bold:
-    family: monospace
+    family: hack
     style: Bold
 
   italic:
-    family: monospace
+    family: hack
     style: Italic
 
   bold_italic:
-    family: monospace
+    family: hack
     style: Bold Italic
 
-  size: 12.0
+  size: 11.8
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

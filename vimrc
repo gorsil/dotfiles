@@ -140,7 +140,7 @@ augroup END
 " Ale settings
 let g:ale_fix_on_save = 1
 let b:ale_linters = {
-\	'go	': ['gometalinter'],
+\	'go': ['gometalinter'],
 \	'python': ['flake8', 'pylint', 'mypy', 'pyflakes'],
 \	'json': ['jsonlint'],
 \	'javascript': ['eslint', 'flow'],

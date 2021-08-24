@@ -149,12 +149,13 @@ let b:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'go': ['gofmt', 'goimports'],
-\   'python': ['autopep8', 'yapf']
+\   'python': ['autopep8', 'yapf'],
 \}
 
 let g:ale_linters_explicit = 1
 let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
 let g:ale_python_autopep8_options = '--max-line-length 120'
+let g:ale_python_flake8_options = '--max-line-length 120'
 
 let g:indentLine_enabled = 1
 let g:indentLine_color_term=236
@@ -166,6 +167,7 @@ map <silent> <leader><space> :noh<cr>
 " Fzf keybinds
 nmap <space>/ :Ag<space>
 
+autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=8
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 smartindent
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with

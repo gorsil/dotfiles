@@ -77,6 +77,13 @@
           - yapf
           - python-pytest
           - python-poetry
+          - gopls
+          - rust-analyzer
+          - python-numpydoc
+          - python-regex
+          - jdk-openjdk
+          - jdk11-openjdk
+          - strace
         state: present
       tags:
         - system

@@ -17,15 +17,7 @@
         name:
           - yay
           - zsh
-          - gdm
-          - sway
-          - waybar
-          - gammastep
-          - otf-font-awesome
-          - alacritty
-          - rofi
-          - dmenu
-          - vim
+          - neovim
           - tmux
           - fzf
           - base-devel
@@ -35,20 +27,15 @@
           - go
           - docker
           - ansible
-          - telegram-desktop
           - clang
           - cmake
           - rust
           - typescript
           - nodejs
           - npm
-          - code
           - the_silver_searcher
           - vim-jedi
           - python-jedi
-          - grim
-          - slurp
-          - wl-clipboard
           - helm
           - kubectl
           - w3m
@@ -59,6 +46,46 @@
           - jupyter
           - neofetch
           - nload
+          - xz
+          - nmap
+          - yarn
+          - gdb
+          - python-pytest
+          - python-poetry
+          - gopls
+          - python-regex
+          - jdk-openjdk
+          - jdk11-openjdk
+          - strace
+
+          - flake8
+          - rust-analyzer
+          - python-isort
+          - yapf
+          - python-pynvim
+          - deno
+          - ansible-lint
+        state: present
+      tags:
+        - system
+
+
+    - name: gui and stuff
+      become: yes
+      pacman:
+        name:
+          - gdm
+          - sway
+          - waybar
+          - gammastep
+          - otf-font-awesome
+          - alacritty
+          - rofi
+          - dmenu
+          - code
+          - grim
+          - slurp
+          - wl-clipboard
           - noto-fonts
           - noto-fonts-emoji
           - noto-fonts-cjk
@@ -67,23 +94,9 @@
           - ttf-droid
           - ttf-font-awesome
           - ttf-hack
-          - xz
-          - nmap
-          - flake8
           - torbrowser-launcher
-          - yarn
-          - gdb
-          - python-isort
-          - yapf
-          - python-pytest
-          - python-poetry
-          - gopls
-          - rust-analyzer
-          - python-numpydoc
-          - python-regex
-          - jdk-openjdk
-          - jdk11-openjdk
-          - strace
+          - pinta
+          - telegram-desktop
         state: present
       tags:
         - system
@@ -94,6 +107,8 @@
         name:
           - aiomoex
           - pandas
+          - python-lsp-server[all]
+          - gdown
       tags:
         - system
 
@@ -151,6 +166,7 @@
         - { src: "$PWD/zshrc", dest: "~/.zshrc" }
         - { src: "$PWD/vimrc", dest: "~/.vimrc" }
 
+        - { src: "$PWD/pycodestyle", dest: "~/.config/pycodestyle" }
         - { src: "$PWD/waybar", dest: "~/.config/waybar" }
         - { src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml" }
 
@@ -172,21 +188,21 @@
       tags:
         - dotfiles
 
-    - name: "create dir for vim plug"
-      file:
-        path: /home/gorsil/.vim/autoload
-        state: directory
-      tags:
-        - vim
+          # - name: "create dir for vim plug"
+          #   file:
+          #     path: /home/gorsil/.vim/autoload
+          #     state: directory
+          #   tags:
+          #     - vim
 
-    - name: "download vim.plug"
-      get_url:
-        url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        dest: /home/gorsil/.vim/autoload/plug.vim
-      tags:
-        - vim
+          # - name: "download vim.plug"
+          #   get_url:
+          #     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+          #     dest: /home/gorsil/.vim/autoload/plug.vim
+          #   tags:
+          #     - vim
 
-    - name: "install vim plugins, slow"
-      shell: vim +PlugInstall +qa
-      tags:
-        - vim
+          # - name: "install vim plugins, slow"
+          #   shell: vim +PlugInstall +qa
+          #   tags:
+          #     - vim

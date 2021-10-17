@@ -148,6 +148,7 @@
         - ~/.config/alacritty
         - ~/.config/sway
         - ~/.config/nvim
+        - ~/notes
       tags:
         - dotfiles
 

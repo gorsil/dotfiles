@@ -2,11 +2,13 @@
 
 # Super-key or windows-key
 set $mod Mod4
+
 # Moves
 set $left h
 set $down j
 set $up k
 set $right l
+
 # Terminal
 set $term alacritty
 # Application menu
@@ -43,39 +45,8 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"' \
     before-sleep $lock
 
-bindsym $mod+backslash exec $lock
-
 # Key bindings
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
-bindsym $mod+d exec $menu
-
 floating_modifier $mod normal
-
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r reload
-
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # Workspaces
 bindsym $mod+1 workspace 1
@@ -102,31 +73,82 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
 
-# Splits
-bindsym $mod+b splith
-bindsym $mod+v splitv
-# Layout modes
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym --to-code {
+	# Exit sway
+	$mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-bindsym $mod+f fullscreen
+	# Basic moves
+	$mod+$left focus left
+	$mod+$down focus down
+	$mod+$up focus up
+	$mod+$right focus right
 
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
+	$mod+Left focus left
+	$mod+Down focus down
+	$mod+Up focus up
+	$mod+Right focus right
 
-# Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
+	# Move windows
+	$mod+Shift+$left move left
+	$mod+Shift+$down move down
+	$mod+Shift+$up move up
+	$mod+Shift+$right move right
 
-# Move focus to the parent container
-bindsym $mod+a focus parent
+	$mod+Shift+Left move left
+	$mod+Shift+Down move down
+	$mod+Shift+Up move up
+	$mod+Shift+Right move right
 
-# Sticky window
-bindsym $mod+Shift+s sticky toggle
+	# Lock screen
+	$mod+backslash exec $lock
 
-# Scratchpad
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+	# Reload sway config
+	$mod+Shift+c reload
+	$mod+Shift+r reload
+
+	$mod+Return exec $term
+	$mod+Shift+q kill
+	$mod+d exec $menu
+
+	# Splits
+	$mod+b splith
+	$mod+v splitv
+
+	# Layout modes
+	$mod+s layout stacking
+	$mod+w layout tabbed
+	$mod+e layout toggle split
+
+	$mod+f fullscreen
+
+	# Make window sticky
+	$mod+Shift+s sticky toggle
+
+	# Take a screenshot
+	$mod+Shift+p exec grim -g "$(slurp -d)" - | wl-copy
+	$mod+p exec grim - | wl-copy
+
+	# Resize current window to 1/3 of total screen width, useful for ultra-wide monitor
+	$mod+u resize set width 25 ppt
+	$mod+i resize set width 50 ppt
+	$mod+o resize set width 33 ppt
+
+	# Toggle the current focus between tiling and floating mode
+	$mod+Shift+space floating toggle
+
+	# Swap focus between the tiling area and the floating area
+	$mod+space focus mode_toggle
+
+	# Move focus to the parent container
+	$mod+a focus parent
+
+	# Scratchpad
+	$mod+Shift+minus move scratchpad
+	$mod+minus scratchpad show
+
+	# Switch to resize mode
+	$mod+r mode "resize"
+}
 
 # Resizing
 mode "resize" {
@@ -144,16 +166,6 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
-
-# Take a screenshot
-bindsym $mod+Shift+p exec grim -g "$(slurp -d)" - | wl-copy
-bindsym $mod+p exec grim - | wl-copy
-
-# Resize current window to 1/3 of total screen width, useful for ultra-wide monitor
-bindsym $mod+u resize set width 25 ppt
-bindsym $mod+i resize set width 50 ppt
-bindsym $mod+o resize set width 33 ppt
 
 bar {
 	swaybar_command waybar

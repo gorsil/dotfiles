@@ -33,9 +33,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'sheerun/vim-polyglot'
 
-" Golang
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " Python
 Plug 'mitsuhiko/vim-jinja'
 Plug 'mitsuhiko/vim-python-combined'
@@ -118,66 +115,13 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 map <C-n> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_focus_on_files=1
 
-let g:airline_theme = "bubblegum"
-let g:airline#extensions#branch#enabled = 1
-let g:rainbow_active = 1
-
-" Go settings
-" let g:go_auto_type_info = 1
-" let g:go_highlight_types = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_structs = 1
-" let g:go_highlight_generate_tags = 1
-" let g:go_highlight_extra_types = 1
-"
-" augroup go
-"   au!
-"   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-"   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-"   au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-"   au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-"
-"   au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
-"   au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
-"   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
-"
-"   au FileType go nmap <leader>r  <Plug>(go-run)
-"   au FileType go nmap <leader>t  <Plug>(go-test)
-"   au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
-"   au FileType go nmap <Leader>i <Plug>(go-info)
-"   au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
-"   au FileType go nmap <C-g> :GoDecls<cr>
-"   au FileType go nmap <leader>dr :GoDeclsDir<cr>
-"   au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
-"   au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
-"   au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
-" augroup END
-
 " Ale settings
 let g:ale_fix_on_save = 1
-let b:ale_linters = {
-\	'go': ['gometalinter'],
-\	'json': ['jsonlint'],
-\	'javascript': ['eslint', 'flow'],
-\}
-
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'go': ['gofmt', 'goimports'],
-\   'python': ['autopep8'],
+\    '*': ['remove_trailing_lines', 'trim_whitespace'],
+\    'go': ['gofmt', 'goimports'],
+\    'python': ['autopep8'],
 \}
-", 'yapf'],
-
-let g:ale_linters_explicit = 1
-let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
-" let g:ale_python_autopep8_options = '--max-line-length 120'
-" let g:ale_python_flake8_options = '--max-line-length 120 --ignore=F405'
-
-" let g:ale_java_google_java_format_options = '-a --skip-sorting-imports'
 
 let g:indentLine_enabled = 1
 let g:indentLine_color_term=236
@@ -198,8 +142,8 @@ require'lspconfig'.denols.setup{}
 require'lspconfig'.ansiblels.setup{}
 
 require'nvim-treesitter.configs'.setup {
-  	highlight = {enable = true},
-  	incremental_selection = {enable = true},
+    highlight = {enable = true},
+    incremental_selection = {enable = true},
 }
 
 vim.g.completion_chain_complete_list = {
@@ -230,24 +174,8 @@ set shortmess+=c
 " Allow russian for vim controls
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
+" Toggle Markdown (MD) preview
 nmap <C-m> <Plug>MarkdownPreviewToggle
-
-" augroup autoformat_settings
-"   autocmd FileType bzl AutoFormatBuffer buildifier
-"   autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
-"   autocmd FileType dart AutoFormatBuffer dartfmt
-"   autocmd FileType go AutoFormatBuffer gofmt
-"   autocmd FileType gn AutoFormatBuffer gn
-"   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-"   autocmd FileType java AutoFormatBuffer google-java-format
-"   autocmd FileType python AutoFormatBuffer yapf
-"   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-"   autocmd FileType rust AutoFormatBuffer rustfmt
-"   autocmd FileType vue AutoFormatBuffer prettier
-" augroup END
-"
-" lua require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
-" autocmd BufEnter * lua require'completion'.on_attach()
 
 autocmd FileType java setlocal expandtab shiftwidth=4 tabstop=8
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 formatoptions+=croq softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with

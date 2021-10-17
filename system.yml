@@ -1,9 +1,9 @@
-- name: "configure local machine"
+- name: configure local machine
   hosts: localhost
   connection: local
   gather_facts: no
   tasks:
-    - name: "run system update"
+    - name: run system update
       become: yes
       pacman:
         update_cache: yes
@@ -11,7 +11,7 @@
       tags:
         - system
 
-    - name: "install required packages"
+    - name: install system packages
       become: yes
       pacman:
         name:
@@ -66,15 +66,8 @@
           - ansible-lint
           - smartmontools
           - lua
-        state: present
-      tags:
-        - system
 
-
-    - name: gui and stuff
-      become: yes
-      pacman:
-        name:
+          # GUI related packages:
           - gdm
           - sway
           - waybar
@@ -102,7 +95,7 @@
       tags:
         - system
 
-    - name: "install pip packages"
+    - name: install pip packages
       become: yes
       pip:
         name:
@@ -113,7 +106,7 @@
       tags:
         - system
 
-    - name: "install npm packages"
+    - name: install npm packages
       become: yes
       npm:
         name: "{{ item }}"
@@ -125,7 +118,7 @@
       tags:
         - system
 
-    - name: "enable gdm"
+    - name: enable gdm
       become: yes
       systemd:
         name: gdm
@@ -133,7 +126,7 @@
       tags:
         - system
 
-    - name: "set default shell to zsh"
+    - name: set default shell to zsh
       become: yes
       user:
         name: gorsil
@@ -141,12 +134,12 @@
       tags:
         - system
 
-    - name: "init all git dependencies"
+    - name: init git submodules
       shell: git submodule update --init --recursive
       tags:
         - dotfiles
 
-    - name: "create directories for configs"
+    - name: create directories for configs
       file:
         path: "{{ item }}"
         state: directory
@@ -155,34 +148,32 @@
         - ~/.config/alacritty
         - ~/.config/sway
         - ~/.config/nvim
-        - ~/.config/nvim/colors
-        - ~/.oh-my-zsh/custom/themes
       tags:
         - dotfiles
 
-    - name: "create links to configs and stuff"
+    - name: emplace links to configs
       file:
         src: "{{ item.src }}"
         dest: "{{ item.dest}}"
         state: link
       with_items:
-        - { src: "$PWD/zshrc", dest: "~/.zshrc" }
         - { src: "$PWD/vimrc", dest: "~/.config/nvim/init.vim" }
-        - { src: "$PWD/p10k.zsh", dest: "~/.p10k.zsh" }
 
         - { src: "$PWD/pycodestyle", dest: "~/.config/pycodestyle" }
         - { src: "$PWD/waybar", dest: "~/.config/waybar" }
         - { src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml" }
 
+        - { src: "$PWD/zshrc", dest: "~/.zshrc" }
         - { src: "$PWD/oh-my-zsh", dest: "~/.oh-my-zsh" }
         - { src: "$PWD/zsh-syntax-highlighting", dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting" }
         - { src: "$PWD/zsh-autosuggestions", dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions" }
         - { src: "$PWD/zsh-256color", dest: "~/.oh-my-zsh/plugins/zsh-256color" }
         - { src: "$PWD/powerlevel10k", dest: "~/.oh-my-zsh/custom/themes/powerlevel10k" }
+        - { src: "$PWD/p10k.zsh", dest: "~/.p10k.zsh" }
       tags:
         - dotfiles
 
-    - name: "create links to scripts, performed as root"
+    - name: create links to scripts, performed as root
       become: yes
       file:
         src: "{{ item.src }}"

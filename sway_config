@@ -179,4 +179,9 @@ default_border pixel
 
 exec gammastep -t 4200K:3200K -l 55.751244:37.618423
 
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+}
+
 include /etc/sway/config.d/*

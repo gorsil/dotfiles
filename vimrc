@@ -29,9 +29,9 @@ Plug 'junegunn/fzf.vim'
 
 " Navigation
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'sheerun/vim-polyglot'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Python
 Plug 'mitsuhiko/vim-jinja'
@@ -112,8 +112,9 @@ nmap t <Plug>(easymotion-t2)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-map <C-n> :NERDTreeToggle<CR>
-let g:nerdtree_tabs_focus_on_files=1
+nnoremap <C-n> :NvimTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
+" let g:nerdtree_tabs_focus_on_files=1
 
 " Ale settings
 let g:ale_fix_on_save = 1
@@ -142,8 +143,8 @@ require'lspconfig'.denols.setup{}
 require'lspconfig'.ansiblels.setup{}
 
 require'nvim-treesitter.configs'.setup {
-    highlight = {enable = true},
-    incremental_selection = {enable = true},
+  highlight = {enable = true},
+  incremental_selection = {enable = true},
 }
 
 vim.g.completion_chain_complete_list = {
@@ -154,6 +155,20 @@ vim.g.completion_chain_complete_list = {
     { mode = { '<c-n>' } }
   },
 }
+
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+require'nvim-tree'.setup{
+  view = {
+    mappings = {
+	  list = {
+        { key = "s", cb = tree_cb("vsplit") },
+        { key = "h", cb = tree_cb("split") },
+        { key = "t", cb = tree_cb("tabnew") },
+      }
+    }
+  }
+}
+
 EOF
 
 autocmd BufEnter * lua require'completion'.on_attach()

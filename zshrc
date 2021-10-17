@@ -19,17 +19,20 @@ export PATH=$PATH:~/opt/bin
 
 # All sorts of alliases/shortcuts
 alias git-uncommit='git reset --soft HEAD~'
-alias vimrc='vim ~/.vimrc'
+
+alias vi='nvim'
+alias vim='nvim'
+
+alias vimrc='vim ~/.config/nvim/init.vim'
 alias zshrc='vim ~/.zshrc && source ~/.zshrc'
 alias zshrcp='vim ~/.zshrc_private && source ~/.zshrc'
 alias swayc='vim ~/.config/sway/config'
 alias sysc='vim ~/.config/dotfiles/system.yml'
+alias notes='vim ~/notes'
+
 alias l='ls -l'
 alias ll='ls -l'
 alias lla='ls -la'
-alias vi='nvim'
-alias vim='nvim'
-alias notes='nvim ~/notes'
 
 # Zsh configurations
 export ZSH=~/.oh-my-zsh

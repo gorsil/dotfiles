@@ -57,7 +57,6 @@
           - jdk-openjdk
           - jdk11-openjdk
           - strace
-
           - flake8
           - rust-analyzer
           - python-isort
@@ -65,6 +64,8 @@
           - python-pynvim
           - deno
           - ansible-lint
+          - smartmontools
+          - lua
         state: present
       tags:
         - system
@@ -153,7 +154,9 @@
       with_items:
         - ~/.config/alacritty
         - ~/.config/sway
-        - ~/.vim/colors
+        - ~/.config/nvim
+        - ~/.config/nvim/colors
+        - ~/.oh-my-zsh/custom/themes
       tags:
         - dotfiles
 
@@ -164,7 +167,8 @@
         state: link
       with_items:
         - { src: "$PWD/zshrc", dest: "~/.zshrc" }
-        - { src: "$PWD/vimrc", dest: "~/.vimrc" }
+        - { src: "$PWD/vimrc", dest: "~/.config/nvim/init.vim" }
+        - { src: "$PWD/p10k.zsh", dest: "~/.p10k.zsh" }
 
         - { src: "$PWD/pycodestyle", dest: "~/.config/pycodestyle" }
         - { src: "$PWD/waybar", dest: "~/.config/waybar" }
@@ -174,6 +178,7 @@
         - { src: "$PWD/zsh-syntax-highlighting", dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting" }
         - { src: "$PWD/zsh-autosuggestions", dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions" }
         - { src: "$PWD/zsh-256color", dest: "~/.oh-my-zsh/plugins/zsh-256color" }
+        - { src: "$PWD/powerlevel10k", dest: "~/.oh-my-zsh/custom/themes/powerlevel10k" }
       tags:
         - dotfiles
 

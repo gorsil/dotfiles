@@ -46,6 +46,9 @@ Plug 'saltstack/salt-vim'
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
+" Colorscheme
+Plug 'sainnhe/sonokai'
+
 call plug#end()
 
 set wildmenu
@@ -65,10 +68,19 @@ set foldnestmax=3
 syntax enable
 filetype plugin indent on
 
-" Colorscheme config
-let g:lucius_style = 'dark'
-let g:lucius_contrast_bg = 'high'
-colorscheme lucius
+" Fabulousness settings
+if has('termguicolors')
+    set termguicolors
+endif
+
+let g:sonokai_style = "andromeda"
+let g:sonokai_better_performance = 1
+colorscheme sonokai
+
+let g:airline_theme = "sonokai"
+let g:airline#extensions#branch#enabled = 1
+
+let g:rainbow_active = 1
 
 " Switching windows
 map <C-j> <C-w>j

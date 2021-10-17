@@ -10,6 +10,9 @@
 [submodule "zsh-autosuggestions"]
 	path = zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "vim-lucius"]
-	path = vim-lucius
-	url = https://github.com/jonathanfilip/vim-lucius.git
+[submodule "sonokai"]
+	path = sonokai
+	url = https://github.com/sainnhe/sonokai
+[submodule "powerlevel10k"]
+	path = powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

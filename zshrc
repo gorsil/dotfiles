@@ -29,6 +29,7 @@ alias zshrcp='vim ~/.zshrc_private && source ~/.zshrc'
 alias swayc='vim ~/.config/sway/config'
 alias sysc='vim ~/.config/dotfiles/system.yml'
 alias notes='vim ~/notes'
+alias dots='cd ~/.config/dotfiles'
 
 alias l='ls -l'
 alias ll='ls -l'

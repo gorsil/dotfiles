@@ -11,6 +11,7 @@ set $right l
 
 # Terminal
 set $term alacritty
+
 # Application menu
 set $menu rofi -show drun
 
@@ -184,5 +185,10 @@ exec_always {
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 }
+
+# Fix for slow GTK applications startup, i.e. waybar
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 include /etc/sway/config.d/*

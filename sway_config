@@ -1,5 +1,19 @@
 # Read `man 5 sway` for a complete reference.
 
+# Fix for slow GTK applications startup, i.e. waybar
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# Make white nice and redish
+exec gammastep -t 4200K:3200K -l 55.751244:37.618423
+
+# Make GTK nice and dark
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+}
+
 # Super-key or windows-key
 set $mod Mod4
 
@@ -178,17 +192,5 @@ default_border pixel
 
 # gaps inner 6
 # gaps outer 6
-
-exec gammastep -t 4200K:3200K -l 55.751244:37.618423
-
-exec_always {
-    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-}
-
-# Fix for slow GTK applications startup, i.e. waybar
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 include /etc/sway/config.d/*

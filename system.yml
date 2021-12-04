@@ -99,6 +99,7 @@
           - torbrowser-launcher
           - pinta
           - telegram-desktop
+          - capitaine-cursors
         state: present
       tags:
         - system
@@ -156,6 +157,7 @@
         - ~/.config/alacritty
         - ~/.config/sway
         - ~/.config/nvim
+        - ~/.icons/default
         - ~/notes
       tags:
         - dotfiles
@@ -171,6 +173,7 @@
         - { src: "$PWD/pycodestyle", dest: "~/.config/pycodestyle" }
         - { src: "$PWD/waybar", dest: "~/.config/waybar" }
         - { src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml" }
+        - { src: "$PWD/cursor.theme", dest: "~/.icons/default/index.theme" }
 
         - { src: "$PWD/zshrc", dest: "~/.zshrc" }
         - { src: "$PWD/oh-my-zsh", dest: "~/.oh-my-zsh" }

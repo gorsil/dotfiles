@@ -66,9 +66,7 @@ syntax enable
 filetype plugin indent on
 
 " Fabulousness settings
-if has('termguicolors')
-    set termguicolors
-endif
+set termguicolors
 
 let g:sonokai_style = "andromeda"
 let g:sonokai_better_performance = 1

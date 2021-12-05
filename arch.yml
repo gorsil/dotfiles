@@ -65,6 +65,7 @@
           - python-pynvim
           - deno
           - ansible-lint
+          - yamllint
           - smartmontools
           - lua
           - bind-tools

@@ -111,6 +111,7 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 nnoremap <C-n> :NvimTreeToggle<CR>
+let g:nvim_tree_group_empty = 1
 " map <C-n> :NERDTreeToggle<CR>
 " let g:nerdtree_tabs_focus_on_files=1
 
@@ -157,6 +158,8 @@ vim.g.completion_chain_complete_list = {
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup{
   view = {
+	hide_root_folder = true,
+	auto_resize = true,
     mappings = {
 	  list = {
         { key = "s", cb = tree_cb("vsplit") },

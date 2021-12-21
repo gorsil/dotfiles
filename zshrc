@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export XDG_CURRENT_DESKTOP=sway
+export MOZ_ENABLE_WAYLAND=1
+
 export EDITOR='nvim'
 export DEFAULT_USER="$(whoami)"
 export TERM="xterm-256color"
@@ -16,6 +19,7 @@ export GOPATH=$HOME/go
 # Add access to custom binaries
 export PATH=$PATH:~/opt/
 export PATH=$PATH:~/opt/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # All sorts of alliases/shortcuts
 alias git-uncommit='git reset --soft HEAD~'
@@ -42,6 +46,9 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=117'
 
+export JDTLS_HOME=/usr/share/java/jdtls/
+export JAVA_HOME=/usr/lib/jvm/default
+
 plugins=(
 	fzf
 	git
@@ -55,6 +62,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+export IDEA_JDK=/usr/lib/jvm/java-11-openjdk
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Private config with tokens and stuff like that
 [ -f ~/.zshrc_private ] && source ~/.zshrc_private

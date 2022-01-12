@@ -153,20 +153,20 @@
         dest: "{{ item.dest}}"
         state: link
       with_items:
-        - { src: "$PWD/vimrc", dest: "~/.config/nvim/init.vim" }
+        - {src: "$PWD/vimrc", dest: "~/.config/nvim/init.vim"}
 
-        - { src: "$PWD/pycodestyle", dest: "~/.config/pycodestyle" }
-        - { src: "$PWD/waybar", dest: "~/.config/waybar" }
-        - { src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml" }
-        - { src: "$PWD/cursor.theme", dest: "~/.icons/default/index.theme" }
+        - {src: "$PWD/pycodestyle", dest: "~/.config/pycodestyle"}
+        - {src: "$PWD/waybar", dest: "~/.config/waybar"}
+        - {src: "$PWD/alacritty.yml", dest: "~/.config/alacritty/alacritty.yml"}
+        - {src: "$PWD/cursor.theme", dest: "~/.icons/default/index.theme"}
 
-        - { src: "$PWD/zshrc", dest: "~/.zshrc" }
-        - { src: "$PWD/oh-my-zsh", dest: "~/.oh-my-zsh" }
-        - { src: "$PWD/zsh-syntax-highlighting", dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting" }
-        - { src: "$PWD/zsh-autosuggestions", dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions" }
-        - { src: "$PWD/zsh-256color", dest: "~/.oh-my-zsh/plugins/zsh-256color" }
-        - { src: "$PWD/powerlevel10k", dest: "~/.oh-my-zsh/custom/themes/powerlevel10k" }
-        - { src: "$PWD/p10k.zsh", dest: "~/.p10k.zsh" }
+        - {src: "$PWD/zshrc", dest: "~/.zshrc"}
+        - {src: "$PWD/oh-my-zsh", dest: "~/.oh-my-zsh"}
+        - {src: "$PWD/zsh-syntax-highlighting", dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting"}
+        - {src: "$PWD/zsh-autosuggestions", dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"}
+        - {src: "$PWD/zsh-256color", dest: "~/.oh-my-zsh/plugins/zsh-256color"}
+        - {src: "$PWD/powerlevel10k", dest: "~/.oh-my-zsh/custom/themes/powerlevel10k"}
+        - {src: "$PWD/p10k.zsh", dest: "~/.p10k.zsh"}
       tags:
         - dotfiles
 
@@ -180,22 +180,3 @@
         - { src: "$PWD/scripts/usdrub.sh", dest: "/usr/local/bin/usdrub"}
       tags:
         - dotfiles
-
-          # - name: "create dir for vim plug"
-          #   file:
-          #     path: /home/gorsil/.vim/autoload
-          #     state: directory
-          #   tags:
-          #     - vim
-
-          # - name: "download vim.plug"
-          #   get_url:
-          #     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-          #     dest: /home/gorsil/.vim/autoload/plug.vim
-          #   tags:
-          #     - vim
-
-          # - name: "install vim plugins, slow"
-          #   shell: vim +PlugInstall +qa
-          #   tags:
-          #     - vim

@@ -95,6 +95,7 @@
           - pinta
           - telegram-desktop
           - capitaine-cursors
+          - godot
 
           # Printing and scanning
           # AUR package hpoj is also required

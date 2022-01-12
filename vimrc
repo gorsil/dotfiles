@@ -6,10 +6,15 @@ Plug 'tmhedberg/SimpylFold' " Folding
 
 " Completion
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'steelsojka/completion-buffers'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/completion-treesitter'
+
+Plug 'habamax/vim-godot'
 
 " Visuals
 Plug 'bling/vim-airline' " Airline
@@ -112,8 +117,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 nnoremap <C-n> :NvimTreeToggle<CR>
 let g:nvim_tree_group_empty = 1
-" map <C-n> :NERDTreeToggle<CR>
-" let g:nerdtree_tabs_focus_on_files=1
 
 " Ale settings
 let g:ale_fix_on_save = 1
@@ -140,20 +143,32 @@ require'lspconfig'.gopls.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.denols.setup{}
 require'lspconfig'.ansiblels.setup{}
-
+require'lspconfig'.gdscript.setup{
+	capabilities = require('cmp_nvim_lsp').update_capabilities(
+		vim.lsp.protocol.make_client_capabilities()
+	)
+}
 require'nvim-treesitter.configs'.setup {
   highlight = {enable = true},
   incremental_selection = {enable = true},
 }
 
-vim.g.completion_chain_complete_list = {
-  default = {
-    { complete_items = { 'lsp' } },
-    { complete_items = { 'buffers' } },
-    { mode = { '<c-p>' } },
-    { mode = { '<c-n>' } }
+local cmp = require'cmp'
+
+cmp.setup({
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
-}
+
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+  }
+})
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup{
@@ -171,8 +186,6 @@ require'nvim-tree'.setup{
 }
 
 EOF
-
-autocmd BufEnter * lua require'completion'.on_attach()
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

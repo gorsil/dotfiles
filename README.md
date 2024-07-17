@@ -8,4 +8,5 @@ ansible-playbook -v system.yml
 ```
 aur/nerd-fonts-hack
 aur/ansible-language-server
+aur/slack-desktop
 ```

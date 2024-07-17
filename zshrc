@@ -20,6 +20,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:~/opt/
 export PATH=$PATH:~/opt/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$GOPATH/bin
 
 # All sorts of alliases/shortcuts
 alias git-uncommit='git reset --soft HEAD~'
@@ -33,7 +34,7 @@ alias zshrcp='vim ~/.zshrc_private && source ~/.zshrc'
 alias swayc='vim ~/.config/sway/config'
 alias sysc='vim ~/.config/dotfiles/system.yml'
 alias notes='vim ~/notes'
-alias dots='cd ~/.config/dotfiles'
+alias dots='vim ~/.config/dotfiles'
 
 alias l='ls -l'
 alias ll='ls -l'
@@ -73,3 +74,19 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
+
+# Spin up ssh-agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+eval "$(direnv hook zsh)"
+
+export YAMLFIX_EXPLICIT_START="false"
+export YAMLFIX_SEQUENCE_STYLE="keep_style"
+export YAMLFIX_SECTION_WHITELINES="1"
+export YAMLFIX_preserve_quotes="true"
+export YAMLFIX_none_representation="null"

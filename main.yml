@@ -1,9 +1,7 @@
 - name: Configure local system
   hosts: localhost
   connection: local
-  gather_facts: yes
+  gather_facts: true
 
-- import_playbook: arch.yml
-  when: ansible_distribution == "Archlinux"
-
-- import_playbook: common.yml
+- import_playbook: system.yml
+- import_playbook: dotfiles.yml

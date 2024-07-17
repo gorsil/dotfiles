@@ -1,4 +1,4 @@
-- name: Configure arch machine
+- name: Configure system packages and services
   hosts: localhost
   connection: local
   tasks:
@@ -8,7 +8,9 @@
         path: /etc/pacman.conf
         section: options
         option: ParallelDownloads
-        value: 10
+        value: 5
+      tags:
+        - system
 
     - name: run system update
       become: yes
@@ -22,55 +24,70 @@
       become: yes
       pacman:
         name:
+          # Python
+          - python
+          - python2
+          - ipython
+          - python-pytest
+          - python-poetry
+          - python-pip
+          - python-pynvim
+          - python-regex
+          - python-isort
+          - flake8
+          - yapf
+
+          # Dev
+          - base-devel
+          - clang
+          - cmake
+          - rust
+          - typescript
+          - go
+          - nodejs
+          - npm
+          - nmap
+          - yarn
+          - gdb
+          - gopls
+          - jdk-openjdk
+          - jdk11-openjdk
+          - strace
+          - deno
+          - ansible-lint
+          - yamllint
+          - tree-sitter
+          - rust-analyzer
+          - lua
+          - ruby-bundler
+          - direnv
+          - jupyter
+
+          # Ops
+          - docker
+          - ansible
+          - kubectl
+          - helm
+          - nload
+          - vault
+
+          # System
           - yay
           - zsh
           - neovim
           - tmux
           - fzf
-          - base-devel
-          - python
-          - python2
-          - ipython
-          - go
-          - docker
-          - ansible
-          - clang
-          - cmake
-          - rust
-          - typescript
-          - nodejs
-          - npm
           - the_silver_searcher
-          - helm
-          - kubectl
-          - abook
-          - jupyter
           - neofetch
-          - nload
           - xz
-          - nmap
-          - yarn
-          - gdb
-          - python-pytest
-          - python-poetry
-          - gopls
-          - python-regex
-          - jdk-openjdk
-          - jdk11-openjdk
-          - strace
-          - flake8
-          - rust-analyzer
-          - python-isort
-          - yapf
-          - python-pynvim
-          - deno
-          - ansible-lint
-          - yamllint
           - smartmontools
-          - lua
           - bind-tools
+          - aws-cli
 
           # GUI related packages:
+          - firefox
+          - thunderbird
+
           - gdm
           - sway
           - waybar
@@ -95,7 +112,7 @@
           - pinta
           - telegram-desktop
           - capitaine-cursors
-          - godot
+          - xdg-desktop-portal-wlr
 
           # Printing and scanning
           # AUR package hpoj is also required
@@ -117,5 +134,28 @@
       user:
         name: gorsil
         shell: /bin/zsh
+      tags:
+        - system
+
+    - name: install pip packages
+      become: yes
+      pip:
+        name:
+          - aiomoex
+          - pandas
+          - python-lsp-server[all]
+          - gdown
+      tags:
+        - system
+
+    - name: install npm packages
+      become: yes
+      npm:
+        name: "{{ item }}"
+        global: yes
+      with_items:
+        - jsonlint
+        - eslint
+        - fixjson
       tags:
         - system

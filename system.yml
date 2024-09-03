@@ -52,6 +52,7 @@
           - gopls
           - jdk-openjdk
           - jdk11-openjdk
+          - jdk17-openjdk
           - strace
           - deno
           - ansible-lint
@@ -61,7 +62,6 @@
           - lua
           - ruby-bundler
           - direnv
-          - jupyter
 
           # Ops
           - docker
@@ -83,10 +83,12 @@
           - smartmontools
           - bind-tools
           - aws-cli
+          - iotop
 
           # GUI related packages:
           - firefox
           - thunderbird
+          - vlc
 
           - gdm
           - sway

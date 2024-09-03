@@ -39,18 +39,25 @@ input type:keyboard {
     xkb_options ctrl:nocaps,grp:alt_shift_toggle
 }
 
+# Inputs config
+# swaymsg -t get_inputs
 input 1149:4128:Kensington______Kensington_Expert_Mouse {
 	pointer_accel -0.6
 }
 
 input type:touchpad {
     tap enabled
+	natural_scroll enabled
 }
 
 input "1133:16500:Logitech_G305" pointer_accel -1
 
 input "1133:50184:Logitech_USB_Trackball" {
     scroll_method on_button_down
+}
+
+input "1133:49300:Logitech_PRO_X_Wireless" {
+	accel_profile flat
 }
 
 # Clamshell mode
@@ -136,6 +143,7 @@ bindsym --to-code {
 	$mod+Shift+r reload
 
 	$mod+Return exec $term
+	$mod+Backspace exec $term
 	$mod+Shift+q kill
 	$mod+d exec $menu
 

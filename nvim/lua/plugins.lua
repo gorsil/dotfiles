@@ -1,0 +1,37 @@
+return {
+	{ "folke/tokyonight.nvim", priority = 1000 },
+	{ "f-person/git-blame.nvim", event = "VeryLazy", opts = { enabled = false } },
+	{ "folke/which-key.nvim", event = "VeryLazy" },
+	{ "nvim-treesitter/nvim-treesitter", branch = "master", build = ":TSUpdate" },
+	{ "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
+	"nvim-tree/nvim-web-devicons",
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/nvim-cmp",
+		},
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+		},
+	},
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-cmdline",
+	"easymotion/vim-easymotion",
+	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "nvim-telescope/telescope.nvim", tag = "0.1.8", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	"stevearc/conform.nvim",
+	"lewis6991/gitsigns.nvim",
+}

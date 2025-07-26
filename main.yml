@@ -1,7 +1,0 @@
-- name: Configure local system
-  hosts: localhost
-  connection: local
-  gather_facts: true
-
-- import_playbook: system.yml
-- import_playbook: dotfiles.yml

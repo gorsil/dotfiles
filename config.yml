@@ -1,0 +1,91 @@
+---
+- name: Configure local system
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  tasks:
+    # =============================================================================
+    # SYSTEM CONFIGURATION
+    # =============================================================================
+    - name: update homebrew
+      homebrew:
+        update_homebrew: true
+      tags: [system]
+    - name: upgrade homebrew packages
+      homebrew:
+        upgrade_all: true
+      tags: [system]
+    - name: install homebrew packages
+      homebrew:
+        name:
+          # Python
+          - python@3.13
+          - pipx
+
+          # Dev tools
+          - go
+          - nmap
+          - nvim
+          - direnv
+          - htop
+          - ansible
+          - pyenv
+          - valkey
+          - telnet
+          - tree
+          - ripgrep
+          - fzf
+          - lua-language-server
+          - stylua
+
+          # Fonts
+          - font-hack-nerd-font
+        state: present
+      tags: [system]
+    - name: ensure pipx path is configured
+      lineinfile:
+        path: ~/.zshrc
+        line: export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+        create: true
+      tags: [system]
+    - name: install pipx packages
+      shell: pipx install {{ item }}
+      with_items:
+        - ansible
+        - poetry==2.1.2
+        - python-lsp-server[all]
+        - ruff
+        - yamlfix
+      tags: [system]
+    - name: ensure pipx path is in environment
+      shell: pipx ensurepath
+      tags: [system]
+    - name: install Go tools
+      shell: go install {{ item }}
+      with_items:
+        - golang.org/x/tools/gopls@latest
+        - golang.org/x/tools/cmd/goimports@latest
+      tags: [system]
+
+    # =============================================================================
+    # DOTFILES CONFIGURATION
+    # =============================================================================
+    - name: init git submodules
+      shell: git submodule update --init --recursive
+      tags: [dotfiles]
+    - name: emplace links to configs
+      file:
+        src: '{{ item.src }}'
+        dest: '{{ item.dest}}'
+        state: link
+      with_items:
+        - {src: $PWD/ghostty_config, dest: ~/Library/Application Support/com.mitchellh.ghostty/config}
+        - {src: $PWD/nvim, dest: ~/.config/nvim}
+        - {src: $PWD/zshrc, dest: ~/.zshrc}
+        - {src: $PWD/oh-my-zsh, dest: ~/.oh-my-zsh}
+        - {src: $PWD/zsh-syntax-highlighting, dest: ~/.oh-my-zsh/plugins/zsh-syntax-highlighting}
+        - {src: $PWD/zsh-autosuggestions, dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions}
+        - {src: $PWD/zsh-256color, dest: ~/.oh-my-zsh/plugins/zsh-256color}
+        - {src: $PWD/powerlevel10k, dest: ~/.oh-my-zsh/custom/themes/powerlevel10k}
+        - {src: $PWD/p10k.zsh, dest: ~/.p10k.zsh}
+      tags: [dotfiles]
